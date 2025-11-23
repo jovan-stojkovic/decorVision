@@ -1,0 +1,2278 @@
+@import "./App.scss";
+
+//////  STRANICA  //////
+.page {
+  .head {
+    @include background;
+    height: 500px;
+
+    .head-cont {
+      opacity: 0;
+      transition: 2s ease;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      height: 100%;
+      max-width: 1200px;
+      &.visible {
+        opacity: 1;
+      }
+    }
+  }
+
+  .head.proizvod {
+    @include background;
+    height: 300px;
+
+    .head-cont {
+      opacity: 0;
+      transition: 2s ease;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      height: 100%;
+      max-width: 1200px;
+
+      &.visible {
+        opacity: 1;
+      }
+    }
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+
+    .gore {
+      margin: 100px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+
+      .levo {
+        width: 100%;
+        height: max;
+        @include background;
+        border-radius: 5px;
+        box-shadow: $shadow-light;
+      }
+
+      .desno {
+        width: 100%;
+      }
+    }
+
+    .dole {
+      @include flex($direction: column);
+      margin: 100px 0;
+
+      .link-kontakt {
+        all: unset;
+        color: $main-green;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        text-align: center;
+        max-width: 250px;
+        cursor: pointer;
+        font-weight: 500;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      p {
+        text-align: center;
+      }
+    }
+
+    .potkategorije {
+      @include flex($justify: space-between);
+
+      .side {
+        width: 48%;
+        height: 800px;
+        @include flex($justify: space-between);
+        flex-direction: column;
+        box-shadow: $shadow-light;
+        padding: 20px;
+        border-radius: 5px;
+
+        h2 {
+          margin-bottom: 20px;
+        }
+
+        p {
+          font-size: 1rem;
+          text-align: justify;
+          margin-bottom: 0;
+
+          &.desc {
+            margin-bottom: 20px;
+          }
+        }
+
+        .img-container {
+          @include background;
+          width: 100%;
+          height: 55%;
+          border-radius: 5px;
+        }
+        &.right {
+          h2 {
+            text-align: end;
+          }
+          .desc {
+            text-align: end;
+          }
+        }
+      }
+    }
+
+    .kategorija-info {
+      text-align: justify;
+      font-size: 1rem;
+      line-height: 2.2rem;
+      color: $dark;
+      margin: 100px 0;
+    }
+
+    .kategorija-naslov {
+      text-align: justify;
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 2.2rem;
+      color: $dark;
+      margin: 20px 0;
+    }
+
+    .grid-proizvoda {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 100px 0;
+
+      .proizvod {
+        width: 23%;
+        aspect-ratio: 1;
+
+        .img-container {
+          width: 100%;
+          aspect-ratio: 1;
+
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            box-shadow: $shadow-light;
+            filter: opacity(0.9);
+            transition: 0.2s;
+            border-radius: 5px;
+
+            &:hover {
+              filter: opacity(1);
+              transition: 0.2s;
+              cursor: pointer;
+              box-shadow: $shadow-strong;
+            }
+
+            &:active {
+              box-shadow: $shadow-light;
+            }
+          }
+        }
+
+        p.ime-proizvoda {
+          text-align: center;
+          margin: 15px 0;
+          font-size: 0.9rem;
+        }
+
+        p.proizvodjac {
+          margin: 0;
+          text-align: center;
+          font-size: 0.7rem;
+          margin-top: -25px;
+          color: gray;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .proizvod-grid {
+      width: 100%;
+      gap: 30px;
+      height: 800px;
+      margin: 100px 0;
+
+      @include flex($direction: column);
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      height: 800px;
+
+      .grid-img-container.one {
+        height: 500px;
+        cursor: pointer;
+        box-shadow: $shadow-light;
+        overflow: hidden;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover {
+          img {
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      .dole {
+        @include flex($justify: space-between);
+        gap: 30px;
+        width: 100%;
+        height: 350px;
+
+        .two {
+          width: 50%;
+          height: 100%;
+          cursor: pointer;
+          box-shadow: $shadow-light;
+          overflow: hidden;
+          border-radius: 5px;
+          transition: all 0.3s ease;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+          }
+
+          &:hover {
+            box-shadow: $shadow-strong;
+            img {
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+
+      .large-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .large-image img {
+        max-width: 80%;
+        max-height: 80%;
+        border-radius: 5px;
+        box-shadow: $shadow-strong;
+      }
+
+      .large-image button {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background: white;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        height: 30px;
+        width: 30px;
+        @include flex();
+        border-radius: 100px;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .forma {
+        width: 50%;
+        height: 800px;
+        @include flex($direction: column);
+        justify-content: space-between;
+        form {
+          margin-bottom: 0;
+          .inputi {
+            height: 40px;
+            padding: 0 10px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+
+            &#message {
+              height: 200px;
+            }
+          }
+
+          #saglasnost {
+            font-size: 0.9rem;
+          }
+
+          button {
+            height: 40px;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.page.proizvod {
+  .proizvod-head {
+    height: 300px;
+    position: relative;
+    margin: 0 auto;
+    background-color: rgb(193, 193, 193);
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+
+    .proizvod-naslov {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      left: 0;
+      right: 0;
+      width: 500px;
+      height: 140px;
+      text-align: center;
+      @include flex();
+      flex-direction: column;
+      background-color: $text-background;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .text {
+      width: 100%;
+      margin-top: 100px;
+      p.opis {
+        margin: 50px 0;
+      }
+
+      .key {
+        font-size: 1em;
+
+        span {
+          font-weight: 600;
+        }
+      }
+    }
+
+    .big-pic {
+      height: 70vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      border-radius: 5px;
+      img {
+        height: 100%;
+        height: 100%;
+        border-radius: 5px;
+        box-shadow: $shadow-strong;
+      }
+    }
+
+    .proizvod-grid {
+      height: auto;
+      .galerija {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1%;
+
+        .grid-img-container.dynamic {
+          height: 15vh;
+          width: 19%;
+          cursor: pointer;
+          margin-bottom: 12px;
+          border-radius: 5px;
+          box-shadow: $shadow-light;
+          transition: 0.2s;
+          overflow: hidden;
+
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform (0.3s);
+          }
+
+          &:hover {
+            box-shadow: $shadow-strong;
+            transition: all 0.2s;
+
+            img {
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.page.dark {
+  .head {
+    filter: brightness(80%);
+  }
+  .container {
+    .kategorija-info {
+      color: $almost-white;
+    }
+    .potkategorije {
+      .side {
+        .img-container {
+          filter: brightness(80%);
+        }
+      }
+    }
+    .gore {
+      .levo {
+        filter: brightness(80%);
+      }
+    }
+    .grid-proizvoda {
+      .proizvod {
+        .img-container {
+          filter: brightness(80%);
+        }
+      }
+    }
+  }
+}
+
+//////  POČETNA STRANICA  //////
+.page.home {
+  .slide-container {
+    height: 500px;
+
+    .react-slideshow-container .nav:first-of-type {
+      left: 100px;
+      background-color: transparent;
+    }
+
+    .react-slideshow-container .nav:last-of-type {
+      right: 100px;
+      background-color: transparent;
+    }
+  }
+
+  #slide {
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    @include flex();
+
+    p.caption {
+      font-size: 1.3rem;
+      color: $almost-white;
+      padding: 25px 45px;
+      background-color: $text-background;
+      border-radius: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  .container {
+    .carousel-container {
+      width: 90%;
+      height: 200px;
+      margin: 20px auto;
+      position: relative;
+      border-radius: 5px;
+      box-shadow: $shadow-light;
+    }
+
+    .slick-arrow {
+      position: absolute;
+      top: 45%;
+      z-index: 1;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &.slick-prev {
+        left: 5px;
+      }
+
+      &.slick-next {
+        right: 25px;
+      }
+
+      &:before {
+        font-family: "slick";
+        font-size: 20px;
+      }
+
+      &.slick-prev:before {
+        content: "←";
+      }
+
+      &.slick-next:before {
+        content: "→";
+      }
+    }
+
+    .slick-slide img {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+    }
+
+    .insta-link-cont {
+      margin: 50px auto;
+      width: 200px;
+      @include flex();
+      flex-direction: column;
+
+      .insta-img-container {
+        background-image: url("/slike/icons/instagram-light-blue.svg");
+        width: 70px;
+        height: 70px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      a {
+        all: unset;
+        margin: 0 auto;
+        cursor: pointer;
+        color: $main-green;
+        font-size: 1rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+      }
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: auto auto auto auto;
+
+      .cell {
+        background-position: center;
+        background-size: cover;
+        aspect-ratio: 1;
+        border-radius: 5px;
+        box-shadow: $shadow-light;
+      }
+
+      .one {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        background-image: url("/slike/instagram/1.jpg");
+      }
+
+      .two {
+        background-image: url("/slike/instagram/2.jpg");
+      }
+
+      .three {
+        background-image: url("/slike/instagram/3.jpg");
+      }
+
+      .four {
+        background-image: url("/slike/instagram/4.jpg");
+      }
+
+      .five {
+        background-image: url("/slike/instagram/5.jpg");
+      }
+    }
+  }
+}
+
+.page.home.dark {
+  .slide-container {
+    filter: brightness(80%);
+  }
+
+  .container {
+    .carousel {
+      filter: brightness(80%);
+    }
+  }
+
+  .grid {
+    filter: brightness(80%);
+  }
+}
+//////  PROIZVODI STRANICA  //////
+.page.proizvodi {
+  .head {
+    background-image: url("/slike/backgrounds/1.jpg");
+  }
+  .container {
+    margin: 0 auto;
+    @include flex();
+
+    .proizvodi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 80px;
+      width: 1200px;
+      height: 1200px;
+      margin: 100px 0;
+
+      .jedan-proizvod {
+        .proizvod-img-container {
+          @include background;
+          border-radius: 5px;
+          box-shadow: $shadow-light;
+          transition: 0.2s;
+          width: 100%;
+          height: 100%;
+
+          &:hover {
+            box-shadow: $shadow-strong;
+            cursor: pointer;
+            transition: 0.2s;
+          }
+
+          &:active {
+            box-shadow: $shadow-light;
+            transition: 0.2s;
+          }
+        }
+
+        .proizvod-naziv {
+          text-align: center;
+          font-size: 1rem;
+          margin: 10px 0;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+.page.proizvodi.dark {
+  .container {
+    .proizvodi-grid {
+      .jedan-proizvod {
+        .proizvod-img-container {
+          filter: brightness(80%);
+        }
+      }
+    }
+  }
+}
+
+//////  O NAMA STRANICA  //////
+.page.o-nama {
+  .head {
+    background-image: url("/slike/backgrounds/2.jpg");
+  }
+  .levo {
+    background-image: url("/slike/backgrounds/8.jpg");
+  }
+}
+
+//////  B2B STRANICA  //////
+.page.btob {
+  .head {
+    background-image: url("/slike/backgrounds/11.jpg");
+  }
+  .levo {
+    background-image: url("/slike/backgrounds/12.jpg");
+  }
+
+  .btob-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 100px;
+    .btob-grid-img {
+      aspect-ratio: 1;
+      box-shadow: $shadow-light;
+      transition: 0.2s;
+      background-position: center;
+      background-size: contain;
+      border-radius: 5px;
+      filter: invert(0.7);
+
+      &:hover {
+        transition: 0.2s;
+        cursor: pointer;
+        box-shadow: $shadow-strong;
+        filter: invert(0.1);
+      }
+
+      &:active {
+        box-shadow: $shadow-light;
+      }
+
+      &.one {
+        background-image: url("/slike/logos/latho.jpg");
+      }
+      &.two {
+        background-image: url("/slike/logos/lapitec.jpg");
+      }
+      &.three {
+        background-image: url("/slike/logos/slate_lite.jpg");
+      }
+      &.four {
+        background-image: url("/slike/logos/decoprint.jpg");
+      }
+    }
+  }
+}
+
+.page.btob.dark {
+  .btob-grid {
+    .btob-grid-img {
+      filter: invert(0.3);
+
+      &:hover {
+        filter: invert(0.8);
+      }
+    }
+  }
+}
+
+//////  KONTAKT STRANICA  //////
+.page.kontakt {
+  .head {
+    background-image: url("/slike/backgrounds/13.jpg");
+  }
+  .container {
+    margin: 0 auto;
+    @include flex();
+    flex-direction: column;
+
+    h2 {
+      color: $main-green;
+      font-size: 1.4rem;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .p-kontakt {
+      text-align: center;
+    }
+  }
+}
+
+
+//////  USLOVI KORIŠĆENJA STRANICA  //////
+.page.uslovi-koriscenja {
+  .head {
+    background-image: url("/slike/backgrounds/14.jpg");
+  }
+
+  .container {
+    margin-top: 50px;
+    h4 {
+      font-family: "Open Sans", sans-serif;
+      font-weight: 600;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    p {
+      text-align: justify;
+    }
+  }
+}
+
+.page.uslovi-koriscenja.dark {
+  .container {
+    h4 {
+      color: white;
+    }
+  }
+}
+
+//////  LAPITEC STRANICA  //////
+.page.lapitec {
+  .head {
+    height: 300px;
+    background-image: url("/slike/proizvodi/Lapitec/Essenza/5 grigio cemento/Grigio Cemento_Satin.jpg");
+  }
+
+  .img-container {
+    &.left {
+      background-image: url("/slike/proizvodi/Lapitec/Musa/6 bianco andromeda/bianco-andromeda-zoom-2.jpg");
+    }
+
+    &.right {
+      background-image: url("/slike/proizvodi/Lapitec/Essenza/5 grigio cemento/grigio-cemento-zoom-1.jpg");
+    }
+  }
+
+  ul {
+    margin-left: 75px;
+
+    li::marker {
+      color: $main-green;
+    }
+  }
+
+  a {
+    all: unset;
+    color: $main-green;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .lapitec-links {
+    display: flex;
+    flex-direction: column;
+    a {
+      margin-bottom: 20px;
+    }
+  }
+
+  p.bold {
+    font-weight: 500;
+  }
+}
+
+//////  LATHO STRANICA  //////
+.page.latho {
+  .head {
+    height: 300px;
+    background-image: url("/slike/proizvodi/Latho/Move/Move Loft/pann-move-loft-iso.jpg");
+  }
+
+  .container {
+    .kategorija-info {
+      margin: 30px 0;
+      font-size: 1rem;
+    }
+  }
+
+  #move-img-container-l {
+    background-image: url("/slike/proizvodi/Latho/Milled/Capri/fresati-capri-brown-head-bnr-1024x640.jpg");
+    height: 70%;
+    background-size: fill;
+  }
+
+  #move-img-container-r {
+    background-image: url("/slike/proizvodi/Latho/Move/Move Q/Q-ambient-Q.jpg");
+    height: 70%;
+  }
+
+  .potkategorije {
+    .side {
+      .text-part {
+        width: 100%;
+      }
+      &.right {
+        h2 {
+          text-align: end;
+        }
+        .desc {
+          text-align: end;
+        }
+      }
+    }
+  }
+}
+
+//////  KAMENI FURNIRI STRANICA  //////
+.page.kameni-furniri {
+  .head {
+    height: 300px;
+    background-image: url("/slike/proizvodi/Kameni furniri/whatsapp-bild-2023-01-17-um-132508-9252.webp");
+  }
+
+  .container {
+    h2.kategorija-info {
+      font-weight: 500;
+      letter-spacing: 2px;
+      font-size: 1.1rem;
+    }
+
+    .kategorija-info {
+      margin: 30px 0;
+      font-size: 1rem;
+    }
+
+    ul {
+      margin-left: 75px;
+
+      li::marker {
+        color: $main-green;
+      }
+    }
+  }
+
+  a {
+    all: unset;
+    color: $main-green;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}
+
+//////  TAPETE STRANICA  //////
+.page.tapete {
+  .head {
+    height: 300px;
+    background-image: url("/slike/proizvodi/Tapete/Decoprint/Reflect.jpg");
+    background-position: top;
+  }
+
+  a {
+    all: unset;
+    color: $main-green;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  #tapeta {
+    width: 48%;
+  }
+}
+
+//////  KVARC STRANICA  //////
+.page.kvarc {
+  .head {
+    height: 300px;
+    background-image: url("/slike/proizvodi/Lapitec/Essenza/5 grigio cemento/Grigio Cemento_Satin.jpg");
+  }
+
+  .container {
+    .kvarc-info {
+      font-size: 1rem;
+      text-align: center;
+      margin: 50px;
+    }
+    .ikonice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      .ikonica-cont {
+        @include flex($direction: column);
+        padding: 20px;
+
+        .ikonica-img-cont {
+          height: 50px;
+          width: 50px;
+          @include background;
+          margin-bottom: 20px;
+
+          &.one {
+            background-image: url("/slike/icons/paint-bucket.png");
+          }
+
+          &.two {
+            background-image: url("/slike/icons/scissors.png");
+          }
+          &.three {
+            background-image: url("/slike/icons/thread.png");
+          }
+          &.four {
+            background-image: url("/slike/icons/measuring-tape.svg");
+          }
+        }
+        .info-ikonice {
+          font-size: 1.2rem;
+          margin-bottom: 20px;
+        }
+        p.kvarc {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+//////  MOVE PROIZVOD STRANICA  //////
+.proizvod.page.move {
+  .proizvod-grid {
+    @include flex();
+    width: 100%;
+    gap: 30px;
+    height: 800px;
+    margin: 100px 0;
+
+    .levo {
+      @include flex($direction: column);
+      justify-content: space-between;
+      gap: 30px;
+      width: 50%;
+      height: 800px;
+
+      .grid-img-container {
+        height: 550px;
+        cursor: pointer;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 5px;
+          box-shadow: $shadow-light;
+        }
+      }
+
+      .levo-dole {
+        width: 100%;
+        height: 250px;
+        cursor: pointer;
+
+        .grid-img-container {
+          width: 100%;
+          height: 250px;
+          border-radius: 5px;
+          box-shadow: $shadow-light;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
+
+//////  RESPONSIVENESS  //////
+
+// <<<600px         1/6
+@media only screen and (max-width: 600px) {
+  //////  STRANICA  //////
+  .page {
+    .head {
+      height: 200px;
+    }
+
+    .head.proizvod {
+      height: 200px;
+    }
+
+    .container {
+      padding: 10px;
+      .gore {
+        margin: 50px 0;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        gap: 20px;
+
+        .levo {
+          height: 400px;
+        }
+      }
+
+      .dole {
+        margin: 50px 0;
+
+        .link-kontakt {
+          font-size: 0.7rem;
+        }
+      }
+
+      .potkategorije {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .side {
+          width: 100%;
+          padding: 10px;
+          height: 600px;
+
+          p {
+            font-size: 0.85rem;
+          }
+
+          &.right {
+            h2 {
+              text-align: left;
+            }
+            .desc {
+              text-align: left;
+            }
+          }
+        }
+      }
+
+      .kategorija-info {
+        font-size: 0.7rem;
+        line-height: 1.8rem;
+        margin: 50px 0;
+      }
+
+      .grid-proizvoda {
+        margin: 50px 0;
+
+        .proizvod {
+          width: 48%;
+
+          p.ime-proizvoda {
+            margin: 10px 0;
+            font-size: 0.8rem;
+          }
+
+          p.proizvodjac {
+            font-size: 0.6rem;
+            margin-bottom: 10px;
+          }
+        }
+      }
+      .proizvod-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+        margin: 50px 0;
+
+        .levo {
+          gap: 10px;
+          width: 100%;
+          height: auto;
+
+          .grid-img-container.one {
+            height: 400px;
+          }
+
+          .levo-dole {
+            gap: 10px;
+            aspect-ratio: 1;
+          }
+        }
+        .forma {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .page.proizvod {
+    .proizvod-head {
+      height: 150px;
+
+      .proizvod-naslov {
+        width: 200px;
+        height: 80px;
+        padding: 5px;
+      }
+    }
+    .container {
+      .text {
+        margin-top: 50px;
+        p.opis {
+          margin: 20px 0;
+        }
+
+        .key {
+          font-size: 0.9rem;
+
+          span {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  //////  POČETNA STRANICA  //////
+  .page.home {
+    .slide-container {
+      height: 400px;
+
+      .react-slideshow-container .nav:first-of-type {
+        display: none;
+      }
+
+      .react-slideshow-container .nav:last-of-type {
+        display: none;
+      }
+    }
+
+    #slide {
+      height: 400px;
+
+      p.caption {
+        font-size: 1rem;
+        text-align: center;
+        padding: 5px;
+      }
+    }
+
+    .container {
+      .carousel {
+        gap: 15px;
+        margin: 50px 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .insta-link-cont {
+        .insta-img-container {
+          width: 50px;
+          height: 50px;
+        }
+
+        a {
+          font-size: 0.8rem;
+          font-weight: 400;
+        }
+      }
+
+      .grid {
+        gap: 15px;
+        grid-template-columns: auto auto;
+      }
+    }
+  }
+
+  //////  PROIZVODI STRANICA  //////
+  .page.proizvodi {
+    .container {
+      .proizvodi-grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 60px;
+        width: 95%;
+        height: 1500px;
+        margin: 50px 0;
+
+        .jedan-proizvod {
+          .proizvod-naziv {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  //////  B2B STRANICA  //////
+  .page.btob {
+    .btob-grid {
+      gap: 5px;
+      margin-bottom: 50px;
+    }
+  }
+
+  //////  KONTAKT STRANICA  //////
+  .page.kontakt {
+    .container {
+
+      h2 {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+    }
+  }
+
+  //////  USLOVI KORIŠĆENJA STRANICA  //////
+  .page.uslovi-koriscenja {
+    .container {
+      margin-top: 50px;
+      h4 {
+        font-weight: 500;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  //////  LAPITEC STRANICA  //////
+  .page.lapitec {
+    .head {
+      height: 150px;
+    }
+  }
+
+  //////  LATHO STRANICA  //////
+  .page.latho {
+    .head {
+      height: 150px;
+    }
+
+    .potkategorije {
+      .side {
+        &.right {
+          h2 {
+            text-align: left;
+          }
+          .desc {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+  //////  KAMENI FURNIRI STRANICA  //////
+  .page.kameni-furniri {
+    .head {
+      height: 150px;
+    }
+
+    ul {
+      margin-left: 40px;
+    }
+  }
+
+  //////  TAPETE STRANICA  //////
+  .page.tapete {
+    .head {
+      height: 150px;
+    }
+    .container {
+      .grid-proizvoda.tapete {
+        justify-content: center;
+        gap: 30px;
+      }
+    }
+    #tapeta {
+      width: 100%;
+    }
+  }
+
+  //////  MOVE PROIZVOD STRANICA  //////
+  .proizvod.page.move {
+    .proizvod-grid {
+      gap: 15px;
+      height: auto;
+      margin: 50px 0;
+
+      .levo {
+        gap: 15px;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+// 601px - 768px    2/6
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  //////  STRANICA  //////
+  .page {
+    .head {
+      height: 250px;
+    }
+
+    .head.proizvod {
+      height: 250px;
+    }
+
+    .container {
+      padding: 10px;
+      .gore {
+        margin: 50px 0;
+        flex-direction: column-reverse;
+        gap: 20px;
+
+        .levo {
+          height: 450px;
+        }
+      }
+
+      .dole {
+        margin: 50px 0;
+
+        .link-kontakt {
+          font-size: 0.9rem;
+        }
+      }
+
+      .potkategorije {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .side {
+          width: 100%;
+          padding: 15px;
+          height: 600px;
+
+          p {
+            font-size: 0.8rem;
+          }
+
+          &.right {
+            h2 {
+              text-align: left;
+            }
+            .desc {
+              text-align: left;
+            }
+          }
+        }
+      }
+
+      .kategorija-info {
+        font-size: 0.8rem;
+        line-height: 2rem;
+        margin: 50px 0;
+      }
+
+      .grid-proizvoda {
+        margin: 50px 0;
+
+        .proizvod {
+          width: 30%;
+
+          p.ime-proizvoda {
+            margin: 12px 0;
+            font-size: 0.8rem;
+          }
+
+          p.proizvodjac {
+            font-size: 0.6rem;
+            margin-bottom: 15px;
+          }
+        }
+      }
+      .proizvod-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        height: auto;
+        margin: 50px 0;
+
+        .levo {
+          gap: 10px;
+          width: 100%;
+          height: auto;
+
+          .grid-img-container.one {
+            height: 450px;
+          }
+
+          .levo-dole {
+            gap: 15px;
+          }
+        }
+        .forma {
+          width: 100%;
+          height: auto;
+          form {
+            .inputi {
+              height: 50px;
+              padding: 0 20px;
+              margin-bottom: 15px;
+
+              &#message {
+                height: 300px;
+              }
+            }
+
+            #saglasnost {
+              font-size: 1rem;
+            }
+
+            button {
+              height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .page.proizvod {
+    .proizvod-head {
+      height: 200px;
+
+      .proizvod-naslov {
+        width: 220px;
+        height: 90px;
+        padding: 8px;
+      }
+    }
+
+    .container {
+      .text {
+        margin-top: 50px;
+        p.opis {
+          margin: 25px 0;
+        }
+
+        .key {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  //////  POČETNA STRANICA  //////
+  .page.home {
+    .slide-container {
+      height: 400px;
+
+      .react-slideshow-container .nav:first-of-type {
+        display: none;
+      }
+
+      .react-slideshow-container .nav:last-of-type {
+        display: none;
+      }
+    }
+
+    #slide {
+      height: 400px;
+
+      p.caption {
+        font-size: 1rem;
+        padding: 10px 45px;
+      }
+    }
+
+    .container {
+      .insta-link-cont {
+        .insta-img-container {
+          width: 50px;
+          height: 50px;
+        }
+
+        a {
+          font-size: 1rem;
+        }
+      }
+
+      .grid {
+        gap: 15px;
+        grid-template-columns: auto auto;
+      }
+    }
+  }
+
+  //////  PROIZVODI STRANICA  //////
+  .page.proizvodi {
+    .container {
+      .proizvodi-grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 70px;
+        width: 100%;
+        height: 2000px;
+        margin: 50px 0;
+
+        .jedan-proizvod {
+          .proizvod-naziv {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  //////  B2B STRANICA  //////
+  .page.btob {
+    .btob-grid {
+      gap: 8px;
+      margin-bottom: 50px;
+    }
+  }
+
+  //////  KONTAKT STRANICA  //////
+  .page.kontakt {
+    .container {
+
+      h2 {
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  //////  USLOVI KORIŠĆENJA STRANICA  //////
+  .page.uslovi-koriscenja {
+    .container {
+      margin-top: 50px;
+
+      h4 {
+        font-weight: 500;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  //////  LAPITEC STRANICA  //////
+  .page.lapitec {
+    .head {
+      height: 200px;
+    }
+  }
+
+  //////  LATHO STRANICA  //////
+  .page.latho {
+    .head {
+      height: 200px;
+    }
+
+    .potkategorije {
+      .side {
+        &.right {
+          h2 {
+            text-align: left;
+          }
+          .desc {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+  //////  KAMENI FURNIRI STRANICA  //////
+  .page.kameni-furniri {
+    .head {
+      height: 200px;
+    }
+
+    ul {
+      margin-left: 50px;
+    }
+  }
+
+  //////  TAPETE STRANICA  //////
+  .page.tapete {
+    .head {
+      height: 200px;
+    }
+    .container {
+      .grid-proizvoda.tapete {
+        justify-content: center;
+        gap: 40px;
+      }
+    }
+    #tapeta {
+      width: 100%;
+    }
+  }
+
+  //////  MOVE PROIZVOD STRANICA  //////
+  .proizvod.page.move {
+    .proizvod-grid {
+      gap: 15px;
+      height: auto;
+      margin: 50px 0;
+
+      .levo {
+        gap: 15px;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+//769px - 992px     3/6
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  //////  STRANICA  //////
+  .page {
+    .head {
+      height: 300px;
+    }
+
+    .head.proizvod {
+      height: 250px;
+    }
+
+    .container {
+      max-width: 800px;
+      .gore {
+        margin: 50px 0;
+        flex-direction: column-reverse;
+        gap: 30px;
+
+        .levo {
+          height: 550px;
+        }
+      }
+      .dole {
+        margin: 50px 0;
+
+        .link-kontakt {
+          font-size: 1.1rem;
+        }
+      }
+
+      .potkategorije {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .side {
+          width: 100%;
+          height: 700px;
+
+          p {
+            font-size: 0.9rem;
+          }
+          &.right {
+            h2 {
+              text-align: left;
+            }
+            .desc {
+              text-align: left;
+            }
+          }
+        }
+      }
+
+      .kategorija-info {
+        font-size: 0.9rem;
+        line-height: 2.5rem;
+        margin: 50px 0;
+      }
+
+      .grid-proizvoda {
+        margin: 50px 0;
+
+        .proizvod {
+          width: 30%;
+
+          p.ime-proizvoda {
+            font-size: 0.9rem;
+          }
+
+          p.proizvodjac {
+            font-size: 0.7rem;
+            margin-top: -30px;
+          }
+        }
+      }
+      .proizvod-grid {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        margin: 50px 0;
+
+        .levo {
+          gap: 20px;
+          width: 100%;
+          height: auto;
+
+          .grid-img-container.one {
+            height: 500px;
+          }
+
+          .levo-dole {
+            gap: 20px;
+          }
+        }
+        .forma {
+          width: 100%;
+          height: auto;
+          form {
+            .inputi {
+              height: 50px;
+              padding: 0 20px;
+              margin-bottom: 15px;
+
+              &#message {
+                height: 300px;
+              }
+            }
+            #saglasnost {
+              font-size: 1rem;
+            }
+            button {
+              height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .page.proizvod {
+    .proizvod-head {
+      height: 250px;
+
+      .proizvod-naslov {
+        width: 250px;
+        height: 100px;
+      }
+    }
+    .container {
+      .text {
+        margin-top: 50px;
+        p.opis {
+          margin: 25px 0;
+        }
+
+        .key {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+
+  //////  POČETNA STRANICA  //////
+  .page.home {
+    .slide-container {
+      height: 450px;
+
+      .react-slideshow-container .nav:first-of-type {
+        left: 20px;
+      }
+
+      .react-slideshow-container .nav:last-of-type {
+        right: 20px;
+      }
+    }
+
+    #slide {
+      height: 450px;
+
+      p.caption {
+        font-size: 1.1rem;
+        padding: 15px 45px;
+      }
+    }
+
+    .container {
+      .carousel {
+        gap: 20px;
+        margin: 50px 0;
+      }
+
+      .insta-link-cont {
+        .insta-img-container {
+          width: 60px;
+          height: 60px;
+        }
+
+        a {
+          font-size: 1rem;
+        }
+      }
+
+      .grid {
+        grid-template-columns: auto auto;
+      }
+    }
+  }
+
+  //////  PROIZVODI STRANICA  //////
+  .page.proizvodi {
+    .container {
+      .proizvodi-grid {
+        grid-gap: 40px;
+        margin: 50px 0;
+
+        .jedan-proizvod {
+          margin-bottom: 30px;
+
+          .proizvod-naziv {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  //////  B2B STRANICA  //////
+  .page.btob {
+    .btob-grid {
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+  }
+
+  //////  KONTAKT STRANICA  //////
+  .page.kontakt {
+    .container {
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  //////  USLOVI KORIŠĆENJA STRANICA  //////
+  .page.uslovi-koriscenja {
+    .container {
+      margin-top: 50px;
+      h4 {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  //////  LAPITEC STRANICA  //////
+  .page.lapitec {
+    .head {
+      height: 250px;
+    }
+  }
+
+  //////  LATHO STRANICA  //////
+  .page.latho {
+    .head {
+      height: 250px;
+    }
+
+    .potkategorije {
+      .side {
+        &.right {
+          h2 {
+            text-align: left;
+          }
+          .desc {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+  //////  KAMENI FURNIRI STRANICA  //////
+  .page.kameni-furniri {
+    .head {
+      height: 250px;
+    }
+
+    ul {
+      margin-left: 60px;
+    }
+  }
+
+  //////  TAPETE STRANICA  //////
+  .page.tapete {
+    .head {
+      height: 250px;
+    }
+
+    #tapeta {
+      width: 49%;
+    }
+  }
+
+  //////  MOVE PROIZVOD STRANICA  //////
+  .proizvod.page.move {
+    .proizvod-grid {
+      gap: 30px;
+      height: auto;
+      margin: 50px 0;
+
+      .levo {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+//993px - 1200px    4/6
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  //////  STRANICA  //////
+  .page {
+    .head {
+      height: 400px;
+    }
+
+    .head.proizvod {
+      height: 350px;
+    }
+
+    .container {
+      max-width: 1000px;
+      .gore {
+        margin: 60px 0;
+        gap: 20px;
+      }
+
+      .dole {
+        margin: 60px 0;
+      }
+
+      .potkategorije {
+        .side {
+          padding: 15px;
+
+          p {
+            font-size: 0.9rem;
+
+            &.desc {
+              margin-bottom: 10px;
+            }
+          }
+
+          .img-container {
+            height: 50%;
+          }
+        }
+      }
+
+      .kategorija-info {
+        font-size: 0.9rem;
+        margin: 60px 0;
+      }
+
+      .grid-proizvoda {
+        margin: 60px 0;
+
+        .proizvod {
+          width: 31%;
+
+          p.ime-proizvoda {
+            font-size: 1rem;
+          }
+
+          p.proizvodjac {
+            margin-top: -30px;
+          }
+        }
+      }
+      .proizvod-grid {
+        margin: 60px 0;
+        .forma {
+          width: 50%;
+          form {
+            .inputi {
+              height: 35px;
+              font-size: 1rem;
+
+              &#message {
+                height: 200px;
+              }
+            }
+            button {
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .page.proizvod {
+    .proizvod-head {
+      .proizvod-naslov {
+        width: 350px;
+        height: 120px;
+      }
+    }
+
+    .container {
+      .text {
+        margin-top: 60px;
+        p.opis {
+          margin: 30px 0;
+        }
+      }
+    }
+  }
+
+  //////  POČETNA STRANICA  //////
+  .page.home {
+    .slide-container {
+      .react-slideshow-container .nav:first-of-type {
+        left: 20px;
+      }
+
+      .react-slideshow-container .nav:last-of-type {
+        right: 20px;
+      }
+    }
+
+    #slide {
+      p.caption {
+        font-size: 1.4rem;
+        padding: 20px 45px;
+      }
+    }
+    .container {
+      .carousel {
+        gap: 30px;
+        margin: 60px 0;
+      }
+    }
+  }
+
+  //////  PROIZVODI STRANICA  //////
+  .page.proizvodi {
+    .container {
+      .proizvodi-grid {
+        grid-gap: 40px;
+        margin: 60px 0;
+
+        .jedan-proizvod {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+
+  //////  B2B STRANICA  //////
+  .page.btob {
+    .btob-grid {
+      gap: 15px;
+      margin-bottom: 60px;
+    }
+  }
+
+  //////  KONTAKT STRANICA  //////
+  .page.kontakt {
+    .container {
+
+      h2 {
+        font-size: 1.7rem;
+      }
+    }
+  }
+
+  //////  USLOVI KORIŠĆENJA STRANICA  //////
+  .page.uslovi-koriscenja {
+    .container {
+      margin-top: 60px;
+    }
+  }
+
+  //////  MOVE PROIZVOD STRANICA  //////
+  .proizvod.page.move {
+    .proizvod-grid {
+      margin: 60px 0;
+    }
+  }
+}
+
+//1201px - 1600px   5/6
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+  //////  STRANICA  //////
+  .page {
+    .head {
+      height: 450px;
+    }
+
+    .container {
+      .gore {
+        margin: 70px 0;
+        gap: 30px;
+      }
+
+      .dole {
+        margin: 70px 0;
+      }
+
+      .potkategorije {
+        .side {
+          p {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .kategorija-info {
+        font-size: 1rem;
+        margin: 70px 0;
+      }
+
+      .grid-proizvoda {
+        margin: 70px 0;
+      }
+
+      .proizvod-grid {
+        margin: 70px 0;
+      }
+    }
+  }
+
+  .page.proizvod {
+    .container {
+      .text {
+        margin-top: 70px;
+      }
+    }
+  }
+
+  //////  POČETNA STRANICA  //////
+  .page.home {
+    .slide-container {
+      .react-slideshow-container .nav:first-of-type {
+        left: 20px;
+      }
+
+      .react-slideshow-container .nav:last-of-type {
+        right: 20px;
+        background-color: transparent;
+      }
+    }
+
+    #slide {
+      p.caption {
+        font-size: 1.2rem;
+      }
+    }
+
+    .container {
+      .carousel {
+        gap: 40px;
+        margin: 70px 0;
+      }
+    }
+  }
+
+  //////  PROIZVODI STRANICA  //////
+  .page.proizvodi {
+    .container {
+      .proizvodi-grid {
+        grid-gap: 50px;
+        margin: 70px 0;
+        .jedan-proizvod {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+
+  //////  B2B STRANICA  //////
+  .page.btob {
+    .btob-grid {
+      margin-bottom: 70px;
+    }
+  }
+
+  //////  USLOVI KORIŠĆENJA STRANICA  //////
+  .page.uslovi-koriscenja {
+    .container {
+      margin-top: 70px;
+    }
+  }
+
+  //////  MOVE PROIZVOD STRANICA  //////
+  .proizvod.page.move {
+    .proizvod-grid {
+      margin: 70px 0;
+    }
+  }
+}

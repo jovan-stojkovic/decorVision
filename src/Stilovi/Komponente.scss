@@ -1,0 +1,1146 @@
+@import "./App.scss";
+
+//////  NAVBAR  //////
+nav {
+  width: 100%;
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  @include flex();
+  @include navbar;
+  z-index: 6;
+
+  .nav-container {
+    width: 1200px;
+    height: 100px;
+    margin: 0 auto;
+    z-index: 5;
+    @include flex($justify: space-between);
+    position: relative;
+
+    img {
+      height: 30px;
+      margin-left: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+
+      .nav-link {
+        all: unset;
+        font-size: 1rem;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        letter-spacing: 3px;
+        z-index: 2;
+        color: $dark;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          height: 4px;
+          left: 0;
+          bottom: -5px;
+          width: 0;
+          background: $main-green;
+          transition: width 0.3s;
+          border-radius: 100px;
+        }
+
+        &:hover:after {
+          width: 100%;
+        }
+
+        &.active {
+          color: $main-green;
+        }
+
+        &:hover {
+          color: $main-green;
+          cursor: pointer;
+        }
+      }
+
+      .proizvodi-div {
+        @include flex();
+        position: relative;
+
+        .hidden-nav-div {
+          position: absolute;
+          top: -20px;
+          left: -25px;
+          visibility: hidden;
+          opacity: 0;
+          transition: 0.2s;
+          z-index: 1;
+          scale: 0.7;
+
+          .empty {
+            height: 60.6px;
+          }
+
+          .hidden-nav-div-cont {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 25px;
+            width: 170px;
+            background-color: rgba(0, 0, 0, 0.8);
+            font-family: "Montserrat", sans-serif;
+            border-radius: 0 0 5px 5px;
+          }
+
+          &.show {
+            top: 0px;
+            visibility: visible;
+            transition: 0.2s;
+            opacity: 1;
+            scale: 1;
+          }
+
+          .hidden-category {
+            all: unset;
+            color: $almost-white;
+            font-size: 0.8rem;
+            font-weight: 500;
+
+            &:hover {
+              color: $main-green;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      #insta-link {
+        height: 1.4rem;
+        width: 1.4rem;
+        background-image: url("/slike/icons/instagram-black.svg");
+        transition: 0.2s;
+        background-position: center;
+        background-size: contain;
+
+        &:hover {
+          background-image: url("/slike/icons/instagram-green.svg");
+          transition: 0.2s;
+        }
+      }
+
+      .theme-btn {
+        all: unset;
+        height: 1.2rem;
+        width: 1.2rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("/slike/icons/moon.svg");
+        transition: 0.2s;
+        cursor: pointer;
+
+        &.dark {
+          background-image: url("/slike/icons/sun.svg");
+        }
+      }
+    }
+
+    .menu-button {
+      all: unset;
+      height: 1.4rem;
+      width: 1.4rem;
+      @include flex();
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      display: none;
+    }
+
+    .x-button {
+      all: unset;
+      height: 1.4rem;
+      width: 1.4rem;
+      @include flex();
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      z-index: 20;
+    }
+  }
+
+  .sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    z-index: 10;
+    .dark-part {
+      height: 100vh;
+      width: 60%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .sidebar-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 40%;
+      padding: 80px 20px;
+      gap: 50px;
+      background-color: rgba(255, 255, 255, 0.95);
+
+      .sidebar-nav-link {
+        all: unset;
+        font-size: 1rem;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        letter-spacing: 3px;
+        z-index: 2;
+        color: $dark;
+        position: relative;
+        cursor: pointer;
+
+        &.sidebar-kategorija {
+          font-size: 0.8rem;
+        }
+
+        &.active {
+          color: $main-green;
+        }
+
+        &:hover {
+          color: $main-green;
+        }
+      }
+
+      .kategorije {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-left: 20px;
+        margin-top: -20px;
+        margin-bottom: -20px;
+      }
+    }
+  }
+}
+
+nav.dark {
+  background-color: $very-dark-blue;
+  box-shadow: $shadow-strong;
+
+  .nav-container {
+    img {
+      filter: invert(1);
+    }
+    .nav-links {
+      .nav-link {
+        color: $almost-white;
+      }
+
+      #insta-link {
+        background-image: url("/slike/icons/instagram-white.svg");
+
+        &:hover {
+          background-image: url("/slike/icons/instagram-green.svg");
+        }
+      }
+
+      .theme-btn {
+        background-image: url("/slike/icons/sun.svg");
+      }
+    }
+
+    .menu-button {
+      img {
+        filter: invert(1);
+      }
+    }
+
+    .x-button {
+      img {
+        filter: invert(1);
+      }
+    }
+  }
+  .sidebar {
+    .dark-part {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .sidebar-container {
+      background-color: rgba(43, 57, 69, 0.95);
+
+      .sidebar-nav-link {
+        color: $almost-white;
+
+        &.active {
+          color: $main-green;
+        }
+
+        &:hover {
+          color: $main-green;
+        }
+      }
+    }
+  }
+}
+
+//////  FOOTER  //////
+footer {
+  width: 100%;
+  background-color: $light-blue;
+  height: 350px;
+  @include flex();
+  flex-direction: column;
+  gap: 20px;
+
+  .footer-logo {
+    width: 300px;
+    height: 100px;
+    margin-bottom: 20px;
+    transition: 0.2s;
+    @include flex();
+
+    img {
+      height: 40px;
+    }
+  }
+
+  .uslovi-link {
+    all: unset;
+    color: $main-green;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.9rem;
+  }
+
+  p.copyright {
+    color: $main-green;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    font-family: "Open Sans", sans-serif;
+  }
+}
+
+footer.dark {
+  background-color: $very-dark-blue;
+
+  .footer-logo {
+    img {
+      filter: invert(1);
+    }
+  }
+  p.copyright {
+    color: $main-green;
+  }
+}
+
+//////  KONTAKT FORMA  //////
+.forma {
+  @include flex($direction: column);
+  width: 70%;
+
+  form {
+    margin-bottom: 100px;
+    position: relative;
+
+    .soon {
+      height: 102%;
+      width: 102%;
+      left: -1%;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(3px);
+      z-index: 2;
+      @include flex();
+      box-shadow: $shadow-strong;
+      p {
+        font-size: 70px;
+        font-weight: 900;
+        color: $main-green;
+      }
+    }
+
+    .inputi {
+      width: 100%;
+      height: 50px;
+      background-color: $light-blue;
+      padding: 0 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      border: 2px solid $light-blue;
+
+      &:hover {
+        box-shadow: $shadow-light;
+      }
+
+      &#message {
+        height: 400px;
+        padding-top: 10px;
+        word-wrap: break-word;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      &::placeholder {
+        font-family: "Montserrat", sans-serif;
+      }
+    }
+
+    p.error {
+      text-align: right;
+      font-size: 0.8rem;
+      margin: 0;
+      color: red;
+      height: 25px;
+
+      &.check {
+        text-align: left;
+      }
+    }
+
+    #saglasnost {
+      text-align: justify;
+      font-size: 1rem;
+      color: gray;
+      margin-bottom: 15px;
+    }
+
+    #checkbox {
+      accent-color: $main-green;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    .checkbox-label {
+      font-weight: 500;
+      cursor: pointer;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    button {
+      all: unset;
+      height: 50px;
+      width: 100%;
+      background-color: $main-green;
+      text-align: center;
+      margin-top: 25px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      color: white;
+      font-size: 1.2rem;
+      letter-spacing: 10px;
+      font-family: "Open Sans", sans-serif;
+
+      &:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .success {
+    padding: 50px;
+    @include flex();
+    flex-direction: column;
+    gap: 50px;
+    height: 100%;
+    background-color: $light-blue;
+    margin-bottom: 100px;
+
+    .success-img-cont {
+      @include background;
+      background-image: url("/slike/icons/success.svg");
+      height: 300px;
+      aspect-ratio: 1;
+    }
+
+    .p-success {
+      margin: 0;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    button {
+      all: unset;
+      height: 50px;
+      width: 80%;
+      background-color: $main-green;
+      text-align: center;
+      border-radius: 5px;
+      color: white;
+      font-size: 1.2rem;
+      letter-spacing: 10px;
+
+      &:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+    }
+  }
+
+  #pravila-url {
+    all: unset;
+    color: $main-green;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}
+
+.forma.dark {
+  form {
+    .inputi {
+      background-color: $blue;
+      border: 2px solid $blue;
+      color: $dark;
+
+      &::placeholder {
+        color: $dark;
+      }
+    }
+
+    p.error {
+      color: rgb(255, 131, 131);
+    }
+
+    .saglasnost {
+      color: $almost-white;
+    }
+
+    .checkbox-label {
+      font-weight: 500;
+      color: $almost-white;
+    }
+  }
+
+  .success {
+    background-color: $very-dark-blue;
+  }
+}
+
+//////  BACK TO THE TOP BUTTON  //////
+.to-the-top-button {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  background-color: transparent;
+  z-index: 5;
+  cursor: pointer;
+  @include flex();
+  img {
+    height: 50px;
+  }
+}
+
+.to-the-top-button.dark {
+  background-color: rgb(32, 44, 55, 0.4);
+  cursor: pointer;
+  img {
+    filter: invert(0.8);
+  }
+}
+
+//////  KONTAKT INFO  //////
+.kontakt-info {
+  width: 100%;
+  background-color: $light-blue;
+  aspect-ratio: 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  margin: 50px 0;
+  border-radius: 5px;
+  box-shadow: $shadow-light;
+
+  .segment {
+    flex-direction: column;
+    @include flex();
+    gap: 10px;
+
+    .kontakt-logo {
+      height: 40px;
+      width: 40px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      &.one {
+        background-image: url("https://www.iconbolt.com/iconsets/carbon-design-system/phone.svg");
+      }
+
+      &.two {
+        background-image: url("https://www.iconbolt.com/iconsets/eleken-essential/mail.svg");
+      }
+
+      &.three {
+        background-image: url("https://www.iconbolt.com/iconsets/akar-icons/location.svg");
+      }
+    }
+    p {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
+}
+
+.page.kontakt.dark {
+  .container {
+    .kontakt-info {
+      background-color: $very-dark-blue;
+
+      .segment {
+        .kontakt-logo {
+          filter: invert(0.9);
+        }
+      }
+    }
+
+    h2 {
+      color: $main-green;
+    }
+  }
+}
+
+//////  RESPONSIVENESS  //////
+
+// <<<600px         1/6
+@media only screen and (max-width: 600px) {
+  nav {
+    .nav-container {
+      width: 100vw;
+      height: 50px;
+      img {
+        height: 15px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .menu-button {
+        display: flex;
+      }
+    }
+    .sidebar {
+      .sidebar-container {
+        .sidebar-nav-link {
+          font-size: 0.8rem;
+
+          &.sidebar-kategorija {
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    height: 150px;
+    gap: 5px;
+
+    .footer-logo {
+      width: 100px;
+      height: 50px;
+      margin-bottom: 5px;
+
+      img {
+        height: 20px;
+      }
+    }
+
+    .uslovi-link {
+      font-weight: 300;
+      font-size: 0.7rem;
+    }
+
+    p.copyright {
+      font-size: 0.6rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .forma {
+    width: 100%;
+
+    form {
+      margin-bottom: 50px;
+      .inputi {
+        height: 30px;
+        padding: 0 10px;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        &#message {
+          height: 200px;
+        }
+      }
+      p.error {
+        font-size: 0.6rem;
+        height: 20px;
+      }
+      .saglasnost {
+        font-size: 0.8rem;
+      }
+      #checkbox {
+        margin-right: 10px;
+      }
+      .checkbox-label {
+        font-weight: 400;
+      }
+    }
+    .success {
+      padding: 20px;
+      gap: 20px;
+      margin-bottom: 50px;
+      .success-img-cont {
+        height: 150px;
+      }
+      .p-success {
+        margin: 0;
+        font-size: 1rem;
+        text-align: center;
+      }
+    }
+  }
+
+  .to-the-top-button {
+    display: none;
+  }
+
+  .kontakt-info {
+    width: 90%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px 0;
+
+    .segment {
+      gap: 20px;
+
+      .kontakt-logo {
+        height: 28px;
+        width: 28px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+// 601px - 768px    2/6
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  nav {
+    .nav-container {
+      width: 100vw;
+      height: 70px;
+      img {
+        height: 20px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .menu-button {
+        display: flex;
+      }
+    }
+    .sidebar {
+      .sidebar-container {
+        .sidebar-nav-link {
+          font-size: 1rem;
+
+          &.sidebar-kategorija {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    height: 180px;
+    gap: 10px;
+
+    .footer-logo {
+      width: 100px;
+      height: 60px;
+      margin-bottom: 5px;
+
+      img {
+        height: 22px;
+      }
+    }
+
+    .uslovi-link {
+      font-weight: 300;
+      font-size: 0.8rem;
+    }
+
+    p.copyright {
+      font-size: 0.6rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .forma {
+    @include flex($direction: column);
+    width: 100%;
+
+    form {
+      margin-bottom: 50px;
+
+      .inputi {
+        height: 40px;
+        padding: 0 15px;
+        margin-bottom: 15px;
+        font-size: 1rem;
+
+        &#message {
+          height: 250px;
+        }
+      }
+
+      p.error {
+        font-size: 0.7rem;
+      }
+
+      .saglasnost {
+        font-size: 0.9rem;
+      }
+    }
+
+    .success {
+      padding: 20px;
+      gap: 20px;
+      margin-bottom: 50px;
+
+      .success-img-cont {
+        height: 150px;
+      }
+
+      .p-success {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .to-the-top-button {
+    bottom: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    img {
+      height: 30px;
+    }
+  }
+
+  .kontakt-info {
+    width: 90%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin: 50px 0;
+
+    .segment {
+      gap: 20px;
+
+      .kontakt-logo {
+        height: 30px;
+        width: 30px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+//769px - 992px     3/6
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  nav {
+    .nav-container {
+      width: 100vw;
+      height: 80px;
+
+      img {
+        height: 20px;
+      }
+      .nav-links {
+        gap: 30px;
+        .nav-link {
+          font-size: 0.8rem;
+        }
+        .proizvodi-div {
+          .hidden-nav-div {
+            .empty {
+              height: 49px;
+            }
+          }
+        }
+        #insta-link {
+          height: 1.2rem;
+          width: 1.2rem;
+        }
+      }
+      .x-button {
+        display: none;
+      }
+    }
+    .sidebar {
+      display: none;
+    }
+  }
+
+  footer {
+    height: 200px;
+    gap: 15px;
+
+    .footer-logo {
+      width: 120px;
+      height: 80px;
+      margin-bottom: 10px;
+
+      img {
+        height: 25px;
+      }
+    }
+
+    .uslovi-link {
+      font-size: 0.9rem;
+    }
+
+    p.copyright {
+      font-size: 0.7rem;
+    }
+  }
+
+  .forma {
+    width: 90%;
+
+    form {
+      margin-bottom: 50px;
+
+      .inputi {
+        font-size: 1.2rem;
+
+        &#message {
+          height: 300px;
+        }
+      }
+    }
+
+    .success {
+      padding: 30px;
+      gap: 30px;
+      margin-bottom: 50px;
+
+      .success-img-cont {
+        height: 200px;
+      }
+
+      .p-success {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .to-the-top-button {
+    bottom: 30px;
+    right: 30px;
+    width: 35px;
+    height: 35px;
+    img {
+      height: 35px;
+    }
+  }
+
+  .kontakt-info {
+    width: 90%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin: 50px 0;
+
+    .segment {
+      gap: 20px;
+    }
+  }
+}
+
+//993px - 1200px    4/6
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  nav {
+    .nav-container {
+      width: 100vw;
+      img {
+        height: 28px;
+      }
+
+      .nav-links {
+        gap: 45px;
+
+        .nav-link {
+          font-size: 0.9rem;
+
+          &::after {
+            height: 3.5px;
+          }
+        }
+
+        .proizvodi-div {
+          .hidden-nav-div {
+            .empty {
+              height: 55px;
+            }
+
+            .hidden-nav-div-cont {
+              width: 160px;
+            }
+          }
+        }
+
+        #insta-link {
+          height: 1.3rem;
+          width: 1.3rem;
+        }
+      }
+
+      .x-button {
+        display: none;
+      }
+    }
+    .sidebar {
+      display: none;
+    }
+  }
+
+  footer {
+    height: 250px;
+
+    .footer-logo {
+      margin-bottom: 10px;
+
+      img {
+        height: 30px;
+      }
+    }
+  }
+
+  .forma {
+    width: 80%;
+
+    form {
+      margin-bottom: 60px;
+
+      .inputi {
+        font-size: 1.3rem;
+      }
+    }
+
+    .success {
+      padding: 40px;
+      gap: 40px;
+      margin-bottom: 60px;
+
+      .success-img-cont {
+        @include background;
+        height: 250px;
+      }
+      .p-success {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .to-the-top-button {
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    img {
+      height: 40px;
+    }
+  }
+
+  .kontakt-info {
+    margin: 40px 0;
+    .segment {
+      .kontakt-logo {
+        height: 35px;
+        width: 35px;
+      }
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+//1201px - 1600px   5/6
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+  .sidebar {
+    display: none;
+  }
+  footer {
+    height: 300px;
+
+    .footer-logo {
+      img {
+        height: 35px;
+      }
+    }
+  }
+  .forma {
+    form {
+      margin-bottom: 60px;
+      .inputi {
+        font-size: 1.3rem;
+      }
+    }
+
+    .success {
+      margin-bottom: 60px;
+
+      .success-img-cont {
+        height: 250px;
+      }
+
+      .p-success {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .to-the-top-button {
+    bottom: 50px;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+    img {
+      height: 40px;
+    }
+  }
+}
+
+
