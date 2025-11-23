@@ -597,22 +597,18 @@ footer.dark {
   }
 }
 
-.page.kontakt.dark {
-  .container {
-    .kontakt-info {
-      background-color: $very-dark-blue;
+.kontakt-info.dark {
+  background-color: $very-dark-blue;
 
-      .segment {
-        .kontakt-logo {
-          filter: invert(0.9);
-        }
-      }
-    }
-
-    h2 {
-      color: $main-green;
+  .segment {
+    .kontakt-logo {
+      filter: invert(0.9);
     }
   }
+}
+
+h2 {
+  color: $main-green;
 }
 
 //////  RESPONSIVENESS  //////
@@ -1142,5 +1138,3 @@ footer.dark {
     }
   }
 }
-
-
